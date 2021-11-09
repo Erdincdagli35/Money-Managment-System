@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Person } from 'src/app/model/person';
+import { Person } from 'src/app/model/person/person';
 import { PersonService } from 'src/app/service/person-service';
 
 @Component({
@@ -23,7 +23,7 @@ export class PersonDetailsComponent implements OnInit {
 
 
   getPersonById(personId: number): void {
-    this.personService.getById(personId).subscribe(response => {
+    this.personService.getPersonById(personId).subscribe(response => {
       this.person = response;
     } );
   }

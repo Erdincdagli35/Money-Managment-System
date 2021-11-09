@@ -1,0 +1,55 @@
+<h2>Income List : {{ person.name }}&nbsp;{{ person.surname }}</h2>
+<button
+  class="btn btn-success-create float-right"
+  type="submit"
+  routerLink="income-create/:id"
+  routerLinkActive="active"
+>
+  Create
+</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Status</th>
+      <th>Money</th>
+      <th>Basic Operarions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let income of incomes">
+      <td>{{ income.id }}</td>
+      <td>{{ income.status }}</td>
+      <td>{{ income.money }}</td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink=""
+            routerLinkActive="active"
+          >
+            Edit</button
+          >&nbsp;
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink=""
+            routerLinkActive="active"
+          >
+            Details</button
+          >&nbsp;
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink=""
+            routerLinkActive="active"
+          >
+            Delete
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

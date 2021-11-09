@@ -1,0 +1,24 @@
+<div class="col-md-6 offset-md-3">
+  <h3>Create Income</h3>
+  <form (ngSubmit)="onSubmit()">
+    <label for="statuses">Status</label>
+
+    <select name="statuses" id="statuses" [(ngModel)]="income.status">
+      <option selected>Select Income Type</option>
+      <option *ngFor="let type of incomeStatuses" [value]="type">{{type | uppercase}}</option>
+    </select>
+
+    <div class="form-group">
+      <label>Money</label>
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        [(ngModel)]="income.money"
+        name="surname"
+      />
+    </div>
+
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>

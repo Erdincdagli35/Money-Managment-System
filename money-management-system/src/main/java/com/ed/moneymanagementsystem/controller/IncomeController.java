@@ -24,14 +24,24 @@ public class IncomeController {
 
     @PostMapping("/{personId}")
     public ResponseEntity create(@RequestBody Income income,
-                                       @PathVariable("personId")Long personId) {
+                                 @PathVariable("personId") Long personId) {
         Person person = personRepository.findOneById(personId);
         if (person == null) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("There is not a Person : id " + personId);
         }
-        return ResponseEntity.ok(incomeService.create(income,person));
+        return ResponseEntity.ok(incomeService.create(income, person));
     }
 
+    @GetMapping("/{personId}")
+    public ResponseEntity getByPersonId(@PathVariable("personId") Long personId) {
+        Person person = personRepository.findOneById(personId);
+        if (person == null) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("There is not a Person : id " + personId);
+        }
+        return ResponseEntity.ok(incomeService.getByPersonId(person));
+    }
 }

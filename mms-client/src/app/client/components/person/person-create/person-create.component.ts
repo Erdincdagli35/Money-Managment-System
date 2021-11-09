@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Person } from 'src/app/model/person';
+import { Person } from 'src/app/model/person/person';
 import { PersonService } from 'src/app/service/person-service';
 
 
@@ -19,7 +19,7 @@ export class PersonCreateComponent implements OnInit {
   }
 
   savePerson(): void {
-    this.personService.create(this.person).subscribe(data => {
+    this.personService.createPerson(this.person).subscribe(data => {
       console.log(data);
       this.goToPersonList();
     },

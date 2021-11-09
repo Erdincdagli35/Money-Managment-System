@@ -9,9 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Log4j2
 @Service
@@ -25,12 +23,25 @@ public class IncomeServiceImp implements IncomeService {
     public Long create(Income income, Person person) {
         log.info("\nIncome : create");
 
-        List<Income> incomeList = new ArrayList<>();
-        incomeList.add(income);
-        person.setIncomes(incomeList);
+        List<Income> incomeTemp = incomeRepository.findAllByPerson_Id(person.getId());
+        if (incomeTemp == null || incomeTemp.size() == 0) {
+            income = incomeRepository.save(income);
+            income.setPerson(person);
+            personRepository.save(person);
+            return income.getId();
+        }
 
-        incomeRepository.save(income);
+        income = incomeRepository.save(income);
+        incomeTemp.add(income);
+        income.setPerson(person);
+
         personRepository.save(person);
         return income.getId();
+    }
+
+    @Override
+    public List<Income> getByPersonId(Person person) {
+        log.info("\nIncome : getByPersonId");
+        return incomeRepository.findAllByPerson_Id(person.getId());
     }
 }

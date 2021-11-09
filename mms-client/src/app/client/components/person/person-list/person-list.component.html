@@ -1,0 +1,87 @@
+<h2>Person List</h2>
+<button
+  class="btn btn-success-create float-right"
+  type="submit"
+  routerLink="person-create"
+  routerLinkActive="active"
+>
+  Create
+</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Job</th>
+      <th>Basic Operation</th>
+      <th>Advance Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of persons">
+      <td>{{ person.id }}</td>
+      <td>{{ person.name }}</td>
+      <td>{{ person.surname }}</td>
+      <td>{{ person.job }}</td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink="person-edit/{{ person.id }}"
+            routerLinkActive="active"
+          >
+            Edit</button
+          >&nbsp;
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink="person-details/{{ person.id }}"
+            routerLinkActive="active"
+          >
+            Details</button
+          >&nbsp;
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink="person-delete/{{ person.id }}"
+            routerLinkActive="active"
+          >
+            Delete
+          </button>
+        </div>
+      </td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink="income-list/{{ person.id }}"
+            routerLinkActive="active"
+          >
+            Income</button
+          >&nbsp;
+
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink=""
+            routerLinkActive="active"
+          >
+            Expenditure</button
+          >&nbsp;
+          <button
+            class="btn btn-success"
+            type="submit"
+            routerLink=""
+            routerLinkActive="active"
+          >
+            Report
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

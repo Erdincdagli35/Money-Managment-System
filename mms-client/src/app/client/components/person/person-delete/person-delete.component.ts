@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Person } from 'src/app/model/person';
+import { Person } from 'src/app/model/person/person';
 import { PersonService } from 'src/app/service/person-service';
 
 @Component({
@@ -20,10 +20,8 @@ export class PersonDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.personService.delete(this.id).subscribe(data => {
-
+    this.personService.deletePerson(this.id).subscribe(data => {
     })
-
     this.goToList();
   }
 

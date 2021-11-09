@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Person } from 'src/app/model/person';
+import { Person } from 'src/app/model/person/person';
 import { PersonService } from 'src/app/service/person-service';
 
 @Component({
@@ -17,14 +17,14 @@ export class PersonEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.personService.getById(this.id).subscribe(data => {
+    this.personService.getPersonById(this.id).subscribe(data => {
       this.person = data;
     },
       error => console.log(error));
   }
 
   onSubmit() {
-    this.personService.edit(this.person).subscribe(data => {
+    this.personService.editPerson(this.person).subscribe(data => {
       this.goToList();
     },
       error => console.log(error));

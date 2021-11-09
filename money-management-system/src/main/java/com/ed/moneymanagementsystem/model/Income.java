@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
@@ -26,6 +25,9 @@ public class Income {
     private Double money;
 
     @JsonIgnore
-    @ManyToOne(targetEntity = Person.class)
-    private List<Person> person;
+    @ManyToOne(
+            targetEntity = Person.class,
+            cascade = {CascadeType.DETACH}
+    )
+    private Person person;
 }
